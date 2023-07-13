@@ -7,8 +7,12 @@
   <h2>Список усіх фільмів</h2>
   <ul>
     {% for movie in movies %}
-      <li><a href="{{ movie.get_url }}">{{ movie.name }}</a>, рейтинг - {{ movie.rating }},
-              рік - {{ movie.year|default:'Невідомо' }}</li>
+      <li><a href="{{ movie.get_url }}">{{ movie.name }}</a>,
+              рейтинг - {{ movie.rating }}%,
+              бюджет - {{ movie.budget }}$,
+              рік - {{ movie.year|default:'Невідомо' }}
+
+      </li>
     {% endfor %}
 
   </ul>
