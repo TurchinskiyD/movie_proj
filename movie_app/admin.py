@@ -29,8 +29,8 @@ class MovieAdmin(admin.ModelAdmin):
     # fields = ['rating', 'name']
     # exclude = ['slug']
     # readonly_fields = ['slug']
-    list_display = ['name', 'rating', 'currency', 'budget', 'rating_status']
-    list_editable = ['rating', 'currency', 'budget']
+    list_display = ['name', 'rating', 'director', 'director_email','budget', 'rating_status']
+    list_editable = ['rating', 'director', 'budget', 'director_email']
     ordering = ['-rating', '-name']
     list_per_page = 10
     actions = ['set_dollars', 'set_euro']

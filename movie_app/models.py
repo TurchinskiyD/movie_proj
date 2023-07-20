@@ -24,6 +24,8 @@ class Movie(models.Model):
                                  validators=[MinValueValidator(1)])
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default=UAH)
     slug = models.SlugField(default='', null=False)
+    director = models.CharField(max_length=100, default="Квентін Тарантіно")
+    director_email = models.EmailField(default='director_email@gmail.com')
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
