@@ -1,5 +1,6 @@
+from django.http import HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404
-from .models import Movie
+from .models import Movie, Director
 from django.db.models import F, Sum, Max, Min, Count, Avg, Value
 
 
@@ -12,8 +13,8 @@ def show_all_movie(request):
         false_bool=Value(False),
         str_field=Value('Hello'),
         number_field=Value(123),
-        new_budget=F('budget')+80000,
-        new_rating = F('rating')-2
+        new_budget=F('budget') + 80000,
+        new_rating=F('rating') - 2
 
     )
     # movies = Movie.objects.order_by(F('year').asc(nulls_last=True), '-rating')
@@ -32,3 +33,14 @@ def show_one_movie(request, slug_movie: str):
     movie = get_object_or_404(Movie, slug=slug_movie)
     return render(request, 'movie_app/one_movie.html',
                   {'movie': movie})
+
+
+def show_all_directors(request):
+    directors = Director.objects.all()
+    return render(request, 'movie_app/all_directors.html', {'directors': directors})
+
+
+def show_one_director(request, slug_director: str):
+    one_director = get_object_or_404(Director, slug=slug_director)
+    return render(request, 'movie_app/one_director.html', {'director': one_director})
+

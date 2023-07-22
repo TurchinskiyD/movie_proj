@@ -8,4 +8,16 @@
   <h3> Рейтинг {{ movie.rating }}%</h3>
   <h3> Бюджет {{ movie.budget }}$</h3>
   <h3> Рік виходу {{ movie.year }}</h3>
+  <hr>
+  <h3>Інформація про режисера</h3>
+  <h3>Ім'я {{ movie.director.first_name }} </h3>
+  <h3>Прізвище {{ movie.director.last_name }} </h3>
+  <h3>Почта {{ movie.director.director_email }} </h3>
+  <hr>
+  <h3>Список акторів</h3>
+  <ul>
+    {% for actor in movie.actors.all %}
+      <li>{{ actor }}</li>
+    {% endfor %}
+  </ul>
 {% endblock %}
